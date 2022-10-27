@@ -9,3 +9,4 @@ Project to test different tools available for Java.
   - Dockerfile defined in project root
 - Kubernetes
   - YAML defined in ./kubernetes
+  - Jib: for Docker container image creation and publishing

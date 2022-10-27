@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>cl.aosorio</groupId>
 	<artifactId>car-insurance</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>car-insurance</name>
 	<description>Car insurance project</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
+		<docker-image.path>registry.hub.docker.com/nolager/car-insurance</docker-image.path>
 	</properties>
 	<dependencies>
 <!--		<dependency>-->
@@ -70,6 +71,27 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.5.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:8-jdk-alpine</image>
+					</from>
+					<to>
+						<image>${docker-image.path}</image>
+						<tags>
+							<tag>${version}</tag>
+						</tags>
+					</to>
+					<container>
+						<ports>
+							<port>8081</port>
+						</ports>
+					</container>
 				</configuration>
 			</plugin>
 		</plugins>
