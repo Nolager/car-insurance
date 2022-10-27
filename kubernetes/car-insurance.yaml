@@ -1,0 +1,33 @@
+# Deployment definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-insurance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: car-insurance
+  template:
+    metadata:
+      labels:
+        app: car-insurance
+    spec:
+      containers:
+        - name: app
+          image: nolager/car-insurance:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+---
+# Service definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: car-insurance
+spec:
+  selector:
+    app: car-insurance
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
