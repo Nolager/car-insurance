@@ -1,0 +1,24 @@
+type Query {
+    carBrands: [CarBrand]
+    carBrandById(id: ID!): CarBrand
+}
+
+type Mutation {
+    addCar(car: CarBrandInput): CarBrand
+}
+
+input CarBrandInput {
+    name: String!
+}
+
+type CarBrand {
+    id: ID!
+    name: String!
+    carModels: [CarModel]
+}
+
+type CarModel {
+    id: ID!
+    name: String!
+    brand: CarBrand
+}
